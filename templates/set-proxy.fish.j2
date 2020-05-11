@@ -1,0 +1,10 @@
+function set-proxy
+  set -l PROXY_SERVER {{ proxy_server }}
+  set -l PROXY_PORT {{ proxy_port }}
+  set -gx http_proxy http://$PROXY_SERVER:$PROXY_PORT
+  set -gx HTTP_PROXY http://$PROXY_SERVER:$PROXY_PORT
+  set -gx https_proxy http://$PROXY_SERVER:$PROXY_PORT
+  set -gx HTTP_PROXY http://$PROXY_SERVER:$PROXY_PORT
+  set -gx no_proxy "{{ no_proxy }}"
+  set -gx NO_PROXY "{{ no_proxy }}"
+end

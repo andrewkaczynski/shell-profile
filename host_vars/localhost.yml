@@ -1,0 +1,34 @@
+software:
+- git
+- vim
+
+vimrc_configure: true
+
+fish_configure: true
+fish_functions:
+- fish_prompt.fish
+- set-aws-profile.fish
+- set-kubectl-profile.fish
+- set-proxy.fish
+- unset-proxy.fish
+
+proxy_server: none
+proxy_port: 3128
+no_proxy: "localhost"
+
+asdf_configure: true
+asdf_version: v0.7.8
+asdf_fish_enabled: true
+
+asdf_application_install: true
+asdf_applications:
+- name: k9s
+  version: 0.19.4
+- name: helm
+  version: 3.2.1
+- name: kubectl
+  version: 1.17.5
+- name: kustomize
+  version: 3.5.4
+- name: yq
+  version: 3.3.0
