@@ -6,7 +6,7 @@
   gather_facts: true
 
   tasks:
-    - name: #### Configure base folder structures ####
+    - name: Configure base folder structures
       block:
 
         - name: Create .config directory
@@ -15,20 +15,20 @@
             state: directory
             mode: 0700
 
-    - name: #### Configure vimrc ####
+    - name: Configure vimrc
       when: vimrc_configure
       template:
         src: vimrc.j2
         dest: "~/.vimrc"
 
-    - name: #### Install basics software ####
+    - name: Install base software
       block:
 
         - name: Install software on RedHat Family Systems
           yum:
             name: "{{ item }}"
             state: latest
-          when: ansible_os_family == "Redhat"
+          when: ansible_os_family == "RedHat"
           become: true
           loop: "{{ software }}"
 
@@ -40,7 +40,7 @@
           become: true
           loop: "{{ software }}"
 
-    - name: #### Install and configure Fish Shell ####
+    - name: Install and configure Fish Shell
       when: fish_configure
       block:
 
@@ -88,7 +88,7 @@
             dest: "~/.config/fish/functions/{{ item }}"
           loop: "{{ fish_functions }}"
 
-    - name: #### Install and configure ASDF ####
+    - name: Install and configure ASDF
       when: asdf_configure
       block:
 
@@ -98,7 +98,7 @@
           dest: ~/.asdf
           version: "{{ asdf_version }}"
 
-      - name: #### Configure ASDF for Fish ####
+      - name: Configure ASDF for Fish
         when: asdf_fish_enabled
         block:
 
@@ -116,7 +116,7 @@
             remote_src: yes
             mode: 0644
 
-    - name: #### Install applications using ASDF ####
+    - name: Install applications using ASDF
       when: asdf_configure and asdf_application_install
       ignore_errors: yes
       block:

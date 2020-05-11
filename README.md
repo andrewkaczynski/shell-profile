@@ -10,7 +10,7 @@ Ansible Playbook to configure my Linux shell environment.
 3. Run the below script to configure your profile.
 
 ```bash
-ansible-profile/profile
+shell-profile/profile
 ```
 
 # Customization
