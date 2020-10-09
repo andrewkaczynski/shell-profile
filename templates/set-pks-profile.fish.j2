@@ -1,0 +1,13 @@
+function set-pks-profile
+	set -l config ~/.pks/
+	if test -d $argv
+		set -gx PKS_HOME ''
+  else if [ $argv = "list" ] 
+    ls -1 $config
+	else if test (ls -a1 $config | grep "$argv" | wc -l) = '0'
+		echo "Invalid profile name"
+	else
+		set -gx PKS_HOME $config$argv
+	end
+end
+

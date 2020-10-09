@@ -1,0 +1,14 @@
+function bosh-vms
+    if test -d $argv[1]
+      echo "Please provide the deployment UUID"
+    else 
+      bosh -d service-instance_$argv[1] vms
+      if [ $argv[2] = 'ssh' ] 
+        if test -d $argv[3]
+          echo "Please provide node UUID"
+        else
+          bosh -d service-instance_$argv[1] ssh $argv[3] 
+        end
+      end
+    end
+end

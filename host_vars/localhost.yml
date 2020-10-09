@@ -1,6 +1,7 @@
 software:
 - git
 - vim
+- fish
 
 vimrc_configure: true
 
@@ -11,8 +12,10 @@ fish_functions:
 - set-kubectl-profile.fish
 - set-proxy.fish
 - unset-proxy.fish
+- set-pks-profile.fish
+- bosh-vms.fish
 
-proxy_server: none
+proxy_server: localhost
 proxy_port: 3128
 no_proxy: "localhost"
 
