@@ -28,5 +28,9 @@ function fish_prompt --description 'Write out the prompt'
   if test -n (echo $KUBECONFIG)
     set kubeconfig "{kubeconfig "(set_color red) (basename $KUBECONFIG) (set_color normal)"} "
   end
-  echo -n -s $git_branch $aws_profile $kubeconfig (set_color $color_cwd) (set_color normal) (prompt_pwd) "$suffix "
+  set -l pksconfig
+  if test -n (echo $PKS_HOME)
+    set pksconfig "{pksconfig "(set_color green) (basename $PKS_HOME) (set_color normal)"} "
+  end
+  echo -n -s $git_branch $aws_profile $kubeconfig $pksconfig (set_color $color_cwd) (set_color normal) (prompt_pwd) "$suffix "
 end
